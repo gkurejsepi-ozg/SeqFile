@@ -6,7 +6,7 @@ Created on Fri May  9 11:33:18 2025
 Sequencer Import File Generator
 
 Modes:
-- End Seq: forward + reverse, ID = YYMMDDPCK1 (previous weekday)
+- End Seq: forward + reverse, ID = YYMMDDPCK1 (today)
 - Full Seq: forward only, ID = YYMMDDSEQ1 (today)
 - HIDI: no input files, ID = YYMMDDHIDI (today)
 
@@ -23,16 +23,16 @@ from io import StringIO
 def generate_seq_id(suffix):
     tz = pytz.timezone('Asia/Singapore')  # GMT+8
     now = datetime.datetime.now(tz)
-
-    if suffix in ["SEQ1", "HIDI"]:
-        return now.strftime('%y%m%d') + suffix
-    else:
+    return now.strftime('%y%m%d') + suffix
+    # if suffix in ["SEQ1", "HIDI"]:
+       # return now.strftime('%y%m%d') + suffix
+   # else:
         # Use previous weekday for PCK1
-        one_day = datetime.timedelta(days=1)
-        while True:
-            now -= one_day
-            if now.weekday() < 5:  # Mon-Fri are 0–4
-                return now.strftime('%y%m%d') + suffix
+       # one_day = datetime.timedelta(days=1)
+       # while True:
+         #   now -= one_day
+           # if now.weekday() < 5:  # Mon-Fri are 0–4
+              #  return now.strftime('%y%m%d') + suffix
 
 # Load the 96-well plate template
 @st.cache_data
