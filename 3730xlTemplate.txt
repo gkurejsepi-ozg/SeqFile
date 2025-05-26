@@ -51,7 +51,7 @@ E06	empty	Comment	OZGene	FullSeq	OzgeneStd
 F06	empty	Comment	OZGene	FullSeq	OzgeneStd			
 G06	empty	Comment	OZGene	FullSeq	OzgeneStd			
 H06	empty	Comment	OZGene	FullSeq	OzgeneStd			
-A07	paste reverse here	Comment	OZGene	FullSeq	OzgeneStd			
+A07	empty	Comment	OZGene	FullSeq	OzgeneStd			
 B07	empty	Comment	OZGene	FullSeq	OzgeneStd			
 C07	empty	Comment	OZGene	FullSeq	OzgeneStd			
 D07	empty	Comment	OZGene	FullSeq	OzgeneStd			
