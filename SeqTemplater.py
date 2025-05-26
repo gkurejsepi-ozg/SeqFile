@@ -43,7 +43,7 @@ def load_template():
 st.title("Sequencer Import File Generator")
 
 # Sequencing mode
-seq_type = st.radio("Select Sequencing Type", options=["End Seq", "Full Seq", "HIDI"])
+seq_type = st.radio("Select Sequencing Type", options=["End Seq (PCK)", "Full Seq (SEQ)", "HIDI"])
 
 # File uploads depending on mode
 forward_file = None
