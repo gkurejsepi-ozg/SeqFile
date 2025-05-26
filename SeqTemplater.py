@@ -49,9 +49,9 @@ seq_type = st.radio("Select Sequencing Type", options=["End Seq (PCK)", "Full Se
 forward_file = None
 reverse_file = None
 
-if seq_type in ["End Seq", "Full Seq"]:
+if seq_type in ["End Seq (PCK)", "Full Seq (SEQ)"]:
     forward_file = st.file_uploader("Upload Forward File", type=["tab"])
-if seq_type == "End Seq":
+if seq_type == "End Seq (PCK)":
     reverse_file = st.file_uploader("Upload Reverse File", type=["tab"])
 
 # Main button
@@ -60,8 +60,8 @@ generate_button = st.button("Generate Sequencer Import Files")
 # Determine if we can proceed
 can_run = (
     seq_type == "HIDI" or
-    (seq_type == "Full Seq" and forward_file) or
-    (seq_type == "End Seq" and forward_file and reverse_file)
+    (seq_type == "Full Seq (SEQ)" and forward_file) or
+    (seq_type == "End Seq (PCK)" and forward_file and reverse_file)
 )
 
 # Run processing
@@ -71,7 +71,7 @@ if generate_button and can_run:
     template_df.fillna('', inplace=True)
 
     # Only modify wells if required
-    if seq_type in ["Full Seq", "End Seq"]:
+    if seq_type in ["Full Seq (SEQ)", "End Seq (PCK)"]:
         wells = template_df.iloc[4:, 0].tolist()
         well_map = {
             str(well).strip()[-3:]: idx
@@ -90,7 +90,7 @@ if generate_button and can_run:
                 template_df.iat[row_idx, 1] = string
 
         # Process reverse input (End Seq only)
-        if seq_type == "End Seq":
+        if seq_type == "End Seq (PCK)":
             reverse_file.seek(0)
             reverse_lines = pd.read_csv(reverse_file, sep="\t", header=None, dtype=str).iloc[:, 0].tolist()
             for string in reverse_lines:
@@ -103,8 +103,8 @@ if generate_button and can_run:
 
     # Generate ID
     suffix = {
-        "Full Seq": "SEQ1",
-        "End Seq": "PCK1",
+        "Full Seq (SEQ)": "SEQ1",
+        "End Seq (PCK)": "PCK1",
         "HIDI": "HIDI"
     }[seq_type]
     seq_id = generate_seq_id(suffix)
