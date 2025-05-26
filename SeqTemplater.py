@@ -40,7 +40,7 @@ def load_template():
     return pd.read_csv("3730xlTemplate.txt", sep="\t", dtype=str, keep_default_na=False)
 
 # --- Streamlit UI ---
-st.title("Sequencer Import File Generator")
+st.title("Sequencer Import File Generator V1.1")
 
 # Sequencing mode
 seq_type = st.radio("Select Sequencing Type", options=["End Seq (PCK)", "Full Seq (SEQ)", "HIDI"])
