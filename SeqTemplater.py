@@ -45,6 +45,23 @@ st.title("Sequencer Import File Generator V1.1")
 # Sequencing mode
 seq_type = st.radio("Select Sequencing Type", options=["End Seq (PCK)", "Full Seq (SEQ)", "HIDI"])
 
+# Use the selected mode to make uploader keys unique
+forward_file = None
+reverse_file = None
+
+if seq_type in ["End Seq (PCK)", "Full Seq (SEQ)"]:
+    forward_file = st.file_uploader(
+        "Upload Forward File", 
+        type=["tab"], 
+        key=f"forward_{seq_type}"  # key changes when mode changes
+    )
+if seq_type == "End Seq (PCK)":
+    reverse_file = st.file_uploader(
+        "Upload Reverse File", 
+        type=["tab"], 
+        key=f"reverse_{seq_type}"  # key changes when mode changes
+    )
+
 # File uploads depending on mode
 forward_file = None
 reverse_file = None
