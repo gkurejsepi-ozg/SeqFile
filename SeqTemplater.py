@@ -63,13 +63,13 @@ if seq_type == "End Seq (PCK)":
     )
 
 # File uploads depending on mode
-forward_file = None
-reverse_file = None
+#forward_file = None
+#reverse_file = None
 
-if seq_type in ["End Seq (PCK)", "Full Seq (SEQ)"]:
-    forward_file = st.file_uploader("Upload Forward File", type=["tab"])
-if seq_type == "End Seq (PCK)":
-    reverse_file = st.file_uploader("Upload Reverse File", type=["tab"])
+#if seq_type in ["End Seq (PCK)", "Full Seq (SEQ)"]:
+#    forward_file = st.file_uploader("Upload Forward File", type=["tab"])
+#if seq_type == "End Seq (PCK)":
+#    reverse_file = st.file_uploader("Upload Reverse File", type=["tab"])
 
 # Main button
 generate_button = st.button("Generate Sequencer Import Files")
