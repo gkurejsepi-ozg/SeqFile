@@ -24,15 +24,15 @@ def generate_seq_id(suffix):
     tz = pytz.timezone('Asia/Singapore')  # GMT+8
     now = datetime.datetime.now(tz)
     return now.strftime('%y%m%d') + suffix
-    # if suffix in ["SEQ1", "HIDI"]:
-       # return now.strftime('%y%m%d') + suffix
-   # else:
-        # Use previous weekday for PCK1
-       # one_day = datetime.timedelta(days=1)
-       # while True:
-         #   now -= one_day
-           # if now.weekday() < 5:  # Mon-Fri are 0–4
-              #  return now.strftime('%y%m%d') + suffix
+    if suffix in ["SEQ1", "HIDI"]:
+       return now.strftime('%y%m%d') + suffix
+   else:
+        Use previous weekday for PCK1
+       one_day = datetime.timedelta(days=1)
+       while True:
+         now -= one_day
+           if now.weekday() < 5:  # Mon-Fri are 0–4
+              return now.strftime('%y%m%d') + suffix
 
 # Load the 96-well plate template
 @st.cache_data
