@@ -23,7 +23,7 @@ from io import StringIO
 def generate_seq_id(suffix):
     tz = pytz.timezone('Asia/Singapore')  # GMT+8
     now = datetime.datetime.now(tz)
-    return now.strfttime('%y%m%d') + suffix
+    return now.strftime('%y%m%d') + suffix
 
 # Load the 96-well plate template
 @st.cache_data
